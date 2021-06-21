@@ -33,7 +33,7 @@ export default function ExerciseCard(props) {
     let updatedData = cloneDeep(exercise)
     updatedData.sets.push(newSet)
     mutate(updatedData, false)
-    axios.post(`http://ultra6mobile:8080/exercise/${id}/set`, newSet)
+    axios.post(`http://localhost:8080/exercise/${id}/set`, newSet)
       .then( resp => {
         mutate(resp.data, false)
         setReps("")
@@ -47,7 +47,7 @@ export default function ExerciseCard(props) {
   }
 
   const handleDeleteSetButton = setId => () => {
-    axios.delete(`http://ultra6mobile:8080/set/${setId}`)
+    axios.delete(`http://localhost:8080/set/${setId}`)
       .then( resp => {
         mutate(resp.data, false)
       })
@@ -60,7 +60,7 @@ export default function ExerciseCard(props) {
       unit: e.target.value
     }
     mutate(updatedView, false)
-    axios.patch(`http://ultra6mobile:8080/exercise/${id}/measure`, {unit: e.target.value})
+    axios.patch(`http://localhost:8080/exercise/${id}/measure`, {unit: e.target.value})
       .then( resp => {
         mutate(resp.data, false)
       })
@@ -69,7 +69,7 @@ export default function ExerciseCard(props) {
 
   const handleDeleteExerciseButton = () => {
     if (isDeleteConfirm) {
-      axios.delete(`http://ultra6mobile:8080/exercise/${id}`)
+      axios.delete(`http://localhost:8080/exercise/${id}`)
         .then( resp => {
           workoutMutate(resp.data, false)
         })

@@ -9,7 +9,7 @@ export default function NewExerciseCard(props) {
 
   const handleSubmit = e => {
     setIsSubmitDisabled(true)
-    axios.post(`http://ultra6mobile:8080/workout/${workoutId}/exercise`, {name: name})
+    axios.post(`http://localhost:8080/workout/${workoutId}/exercise`, {name: name})
       .then( resp => {
         workoutMutate(resp.data, false)
         setName("")

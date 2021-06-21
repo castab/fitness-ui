@@ -42,3 +42,13 @@ export function useExercise(exerciseId, initialData) {
         mutate: mutate
     }
 }
+
+export function useRecentActivity() {
+    const {data, error, mutate} = useSWR(`http://localhost:8080/workouts`, fetchGET)
+    return {
+        workouts: data,
+        isLoading: !error & !data,
+        isError: error,
+        mutate: mutate
+    }
+}

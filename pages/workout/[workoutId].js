@@ -1,10 +1,10 @@
-import PathPropertyExtractor from "../../components/PathPropertyExtractor"
-import WorkoutCard from "../../components/WorkoutCard"
+import PathPropertyExtractor from '../../components/PathPropertyExtractor';
+import WorkoutCard from '../../components/WorkoutCard';
 
 export default function Workout() {
-  return (
-    <PathPropertyExtractor property="workoutId">
-      <WorkoutCard />
-    </PathPropertyExtractor>
-  )
+    return (
+        <PathPropertyExtractor property="workoutId">
+            <WorkoutCard />
+        </PathPropertyExtractor>
+    );
 }

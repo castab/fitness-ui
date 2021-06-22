@@ -40,7 +40,7 @@ export default function ExerciseCard(props) {
         updatedData.sets.push(newSet);
         mutate(updatedData, false);
         axios
-            .post(`http://localhost:8080/exercise/${id}/set`, newSet)
+            .post(`${process.env.NEXT_PUBLIC_API_HOST}/exercise/${id}/set`, newSet)
             .then((resp) => {
                 mutate(resp.data, false);
                 setReps('');
@@ -56,7 +56,7 @@ export default function ExerciseCard(props) {
     };
 
     const handleDeleteSetButton = (setId) => () => {
-        axios.delete(`http://localhost:8080/set/${setId}`).then((resp) => {
+        axios.delete(`${process.env.NEXT_PUBLIC_API_HOST}/set/${setId}`).then((resp) => {
             mutate(resp.data, false);
         });
     };
@@ -69,7 +69,9 @@ export default function ExerciseCard(props) {
         };
         mutate(updatedView, false);
         axios
-            .patch(`http://localhost:8080/exercise/${id}/measure`, { unit: e.target.value })
+            .patch(`${process.env.NEXT_PUBLIC_API_HOST}/exercise/${id}/measure`, {
+                unit: e.target.value
+            })
             .then((resp) => {
                 mutate(resp.data, false);
             })
@@ -81,7 +83,7 @@ export default function ExerciseCard(props) {
     const handleDeleteExerciseButton = () => {
         if (isDeleteConfirm) {
             axios
-                .delete(`http://localhost:8080/exercise/${id}`)
+                .delete(`${process.env.NEXT_PUBLIC_API_HOST}/exercise/${id}`)
                 .then((resp) => {
                     workoutMutate(resp.data, false);
                 })

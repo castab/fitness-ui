@@ -11,7 +11,9 @@ export default function NewExerciseCard(props) {
     const handleSubmit = () => {
         setIsSubmitDisabled(true);
         axios
-            .post(`http://localhost:8080/workout/${workoutId}/exercise`, { name: name })
+            .post(`${process.env.NEXT_PUBLIC_API_HOST}/workout/${workoutId}/exercise`, {
+                name: name
+            })
             .then((resp) => {
                 workoutMutate(resp.data, false);
                 setName('');

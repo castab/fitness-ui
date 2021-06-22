@@ -45,7 +45,7 @@ export default function Home() {
     const handleNewExerciseClick = () => {
         setIsSubmitDisabled(true);
         axios
-            .post(`http://localhost:8080/workout`)
+            .post(`${process.env.NEXT_PUBLIC_API_HOST}/workout`)
             .then((resp) => {
                 router.push(`/workout/${resp.data.id}`);
             })

@@ -7,12 +7,18 @@ services:
 
     fitness-backend:
         image: castab/fitness-backend:local
+        environment:
+            - SPRING_DATA_MONGODB_USERNAME=fitness_service
+            - SPRING_DATA_MONGODB_PASSWORD=fitness_password
+            - SPRING_DATA_MONGODB_DATABASE=fitness_log
+            - SPRING_DATA_MONGODB_HOST=mongo
         ports:
             - "8080:8080"
 
     mongo:
         image: mongo
         restart: always
-        environment:
-            MONGO_INITDB_ROOT_USERNAME: mongoadmin
-            MONGO_INITDB_ROOT_PASSWORD: mongopassword
+        ports:
+            - "27017:27017"
+        volumes:
+            - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js

@@ -8,10 +8,7 @@ services:
     fitness-backend:
         image: castab/fitness-backend:local
         environment:
-            - SPRING_DATA_MONGODB_USERNAME=fitness_service
-            - SPRING_DATA_MONGODB_PASSWORD=fitness_password
-            - SPRING_DATA_MONGODB_DATABASE=fitness_log
-            - SPRING_DATA_MONGODB_HOST=mongo
+            - MONGO_URI=mongodb://fitness_service:fitness_password@mongo/fitness_log
         ports:
             - "8080:8080"
 

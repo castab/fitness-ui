@@ -1,5 +1,6 @@
 version: "3.0"
 services:
+    # Comment out the fitness-ui service to test active development work
     fitness-ui:
         image: castab/fitness-ui:local
         ports:

@@ -60,6 +60,10 @@ export default function Home() {
             <Head>
                 <title>Fitness UI</title>
                 <link rel="icon" href="/favicon.ico" />
+                <link
+                    href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
+                    rel="stylesheet"
+                />
             </Head>
             <main>
                 <Grid container justify="center" alignContent="center" spacing={4}>

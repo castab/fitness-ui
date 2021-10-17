@@ -12,6 +12,7 @@ import {
 } from '@material-ui/icons';
 import { useExercise } from '../hooks/fetchers';
 import MeasureUnitSelector from './MeasureUnitSelector';
+import PersonalRecord from './PersonalRecord';
 
 export default function ExerciseCard(props) {
     const { exerciseId, initialData, workoutMutate } = props;
@@ -101,7 +102,7 @@ export default function ExerciseCard(props) {
     };
 
     return (
-        <Card>
+        <Card style={{ color: '#1f271b' }}>
             <CardContent>
                 <Grid container>
                     <Grid container item justify="space-between">
@@ -127,6 +128,7 @@ export default function ExerciseCard(props) {
                         </Grid>
                     </Grid>
                 </Grid>
+                <PersonalRecord exerciseName={exercise.name} />
                 {sets.length > 0 && (
                     <Grid container>
                         <Grid container item justify="space-around" alignItems="center">

@@ -51,6 +51,33 @@ export function useExercise(exerciseId, initialData) {
     };
 }
 
+export function usePersonalRecord(exerciseName) {
+    const name = encodeURIComponent(exerciseName);
+    const { data, error, mutate } = useSWR(
+        `${process.env.NEXT_PUBLIC_API_HOST}/exercise/pr?name=${name}`,
+        (url) => axios.get(url)
+            .then((res) => res.data)
+            .catch((err) => {
+                if (err.response && err.response.data && err.response.status == 404) {
+                    return null
+                }
+                throw err
+            }),
+        {
+            revalidateOnMount: true,
+            revalidateOnFocus: false,
+            revalidateOnReconnect: false,
+            refreshInterval: 300000
+        }
+    );
+    return {
+        exercise: data,
+        isLoading: !error && !data,
+        isError: error,
+        mutate: mutate
+    };
+}
+
 export function useRecentActivity() {
     const { data, error, mutate } = useSWR(
         `${process.env.NEXT_PUBLIC_API_HOST}/workouts`,
